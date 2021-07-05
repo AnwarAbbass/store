@@ -3,9 +3,7 @@ import React from "react";
 function Footer(){
     return(
         <footer>
-            <h1>
-                StoreFront
-            </h1>
+            $copy; store for all 
         </footer>
     )
 }
