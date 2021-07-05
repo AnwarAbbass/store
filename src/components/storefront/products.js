@@ -2,14 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 
 function Products(props) {
-
-    return (
+console.log('5 storefront product',props);
+    if (props.product) 
+    {return (
         <>
-            <ul>
-                {props.product.map((item, idx) => {
+            <div>
+                <h3>{console.log('xxxx',props.categories)} {props.categories.displayName}</h3>
+            </div>
+            {console.log('13 product storefront',props)}
+            {props.product.map((item, idx) => {
                     return (
                         <li key={idx}>
-                            <img alt="item" src={item.image} />
+                            {/* <img alt="item" src={item.image} /> */}
+                            {console.log('pppppp',item)}
                             {item.name}
                             {item.price}$
                             <button>
@@ -21,14 +26,15 @@ function Products(props) {
                         </li>
                     )
                 })}
-            </ul>
+                
         </>
-    );
+    );}
+    else return <div></div>;
 }
 
 const mapStateToProps = (state) => ({
-    product: state.ProductReducer.productsList,
-    categories: state.CategoryReducer.categories,
+    product: state.ProductReducer.List,
+    categories: state.CatigoryReducer.cat,
 });
 
 export default connect(mapStateToProps)(Products);

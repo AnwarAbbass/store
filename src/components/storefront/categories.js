@@ -1,27 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { active } from '../../store/categories';
-import Tab from "@material-ui/core/Tab";
 
-const Category=(props)=>{
-    return(
-        {props.categories.map((item,i)=>{
-            return(
-                <Tab
-                 color="secondary"
-                 label={category.displayName}
-                 key={i}
-                 onClick={() => props.active(item)}
-                ></Tab>
-            )
-        })}
+const Category = (props) => {
+    console.log('props', props);
+    return (
+        <ul>
+            {props.categories.map((item, i) => {
+                return (
+                    <li
+                        key={i}
+                        onClick={() => props.active(item.normalizedName)}>
+                        {item.displayName}
+                    </li>
+                )
+            })}
+        </ul>
     );
 }
 
-const mapStateToProps = (state) =>({
-    categories : state.CategoryReducer.categories
+const mapStateToProps = (state) => ({
+    categories: state.CatigoryReducer.categories
 })
 
-const mapDispatchToProps={active};
+const mapDispatchToProps = { active };
 
-export default connect(mapDispatchToProps,mapStateToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

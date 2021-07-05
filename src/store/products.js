@@ -1,33 +1,65 @@
+// import { ListItemAvatar } from "@material-ui/core";
+
 let initialProductState = {
     products: [
-      {
-        category: "food",
-        name: "Pizza",
-        description: "",
-        price: 10,
-        inventoryCount: 5,
-        image:
-          "https://www.qsrmagazine.com/sites/default/files/styles/story_page/public/story/pizza-hut-turns-comeback-expert_0.jpg?itok=U_V-5YAD",
-      },
-      {
-        category: "electronics",
-        name: "Google Pixel",
-        description: "",
-        price: 400,
-        inventoryCount: 2,
-        image:
-          "https://www.techadvisor.com/cmsdata/slideshow/3795872/google_pixel_4a_case_thumb800.jpg",
-      },
-      {
-        category: "electronics",
-        name: "Iphone 11",
-        description: "",
-        price: 500,
-        inventoryCount: 2,
-        image:
-          "https://cdn.pocket-lint.com/r/s/1200x/assets/images/149324-phones-review-review-iphone-11-pro-max-review-product-shots-image1-keant0hfcg.jpg",
-      },
+        {
+            categoryAssociation: "food",
+            name: "Pizza",
+            description: "",
+            price: 10,
+            inventoryCount: 5,
+        },
+        {
+            categoryAssociation: "food",
+            name: "rose",
+            description: "",
+            price: 5,
+            inventoryCount: 5,
+        },
+        {
+            categoryAssociation: "food",
+            name: "milk",
+            description: "",
+            price: 5,
+            inventoryCount: 5,
+        },
+        {
+            categoryAssociation: "electronic",
+            name: "Nokia",
+            description: "",
+            price: 800,
+            inventoryCount: 5,
+        },
+        {
+            categoryAssociation: "electronic",
+            name: "HP",
+            description: "",
+            price: 400,
+            inventoryCount: 5,
+        },
+        {
+            categoryAssociation: "electronic",
+            name: "Lenovo",
+            description: "",
+            price: 1000,
+            inventoryCount: 5,
+        },
+      
     ],
-  
-    List: [],
 };
+
+const ProductReducer =(state = initialProductState,action)=>{
+    let {type,payload}=action;
+    switch (type) {
+        case 'active':
+            console.log('state.products',payload,state.products);
+            let List= state.products.filter(item=> item.categoryAssociation===payload);
+            console.log('56 storefront product',List);
+            return { products: state.products, List: List };    
+        default:
+            console.log('59 storefront product',state);
+            return state;
+    }
+}
+
+export default ProductReducer;
