@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { active } from '../../store/categories';
+import { useDispatch } from 'react-redux';
+import { getRemoteData } from '../../store/actions';
 
 const Category = (props) => {
+    const dispatch = useDispatch();
     console.log('props', props);
     return (
         <ul>
@@ -10,7 +13,7 @@ const Category = (props) => {
                 return (
                     <li
                         key={i}
-                        onClick={() => props.active(item.normalizedName)}>
+                        onClick={() => dispatch(getRemoteData(item.normalizedName,'get',{}))}>
                         {item.displayName}
                     </li>
                 )
@@ -21,7 +24,7 @@ const Category = (props) => {
 
 const mapStateToProps = (state) => ({
     categories: state.CatigoryReducer.categories
-})
+});
 
 const mapDispatchToProps = { active };
 

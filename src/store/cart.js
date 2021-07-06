@@ -21,7 +21,7 @@ const CartReducer = (state = initialCartState, action) => {
               inventoryCount:payload.inventoryCount++,
             };
       default:
-        console.log('20 storefront catigories',state);
+        console.log('20 storefront cart',state);
         return state;
     }
 };

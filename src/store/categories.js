@@ -6,11 +6,11 @@ let initialState = {
 
 const CatigoryReducer = (state = initialState, action) => {
   let { type, payload } = action;
-  // console.log('9 storefront catigories',payload,initialState);
+  console.log('9 storefront catigories',payload);
   switch (type) {
     case "active":
-      let cat =state.categories.filter(cat => cat.normalizedName === payload)
-      // console.log('13 storefront catigories',cat);
+      let cat =state.categories.filter(cat => cat.normalizedName === payload.results.category)
+      console.log('13 storefront catigories',cat);
       return {
         categories: state.categories,
         cat:cat[0]

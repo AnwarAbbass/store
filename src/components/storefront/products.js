@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import {addToCart} from '../../store/cart'
+import {addToCart} from '../../store/cart';
+import { useDispatch, useSelector } from 'react-redux';
+
 function Products(props) {
-console.log('5 storefront product',props);
     if (props.product) 
     {return (
         <>
+        {console.log('5 storefront product',props)}
             <div>
                 <h3>{console.log('xxxx',props.categories)} {props.categories.displayName}</h3>
             </div>
