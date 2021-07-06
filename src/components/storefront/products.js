@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import {addToCart} from '../../store/cart'
 function Products(props) {
 console.log('5 storefront product',props);
     if (props.product) 
@@ -14,10 +14,11 @@ console.log('5 storefront product',props);
                     return (
                         <li key={idx}>
                             {/* <img alt="item" src={item.image} /> */}
-                            {console.log('pppppp',item)}
+                            {console.log('17 product',item)}
                             {item.name}
-                            {item.price}$
-                            <button>
+                            <br></br>
+                            {item.price} $
+                            <button onClick={() => props.addToCart(item)}>
                                 Add to Cart
                             </button>
                             <button>
@@ -37,4 +38,6 @@ const mapStateToProps = (state) => ({
     categories: state.CatigoryReducer.cat,
 });
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { addToCart };
+
+export default connect(mapStateToProps,mapDispatchToProps)(Products);

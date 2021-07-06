@@ -4,36 +4,40 @@ let initialCartState = {
   
 const CartReducer = (state = initialCartState, action) => {
     let { type, payload } = action;
-    console.log('7 cart',payload,initialCartState);
+    console.log('7 cart',payload);
     switch (type) {
-      case "addToCart":
-          if(state.cart.includes(payload)) state.cart.push(payload)
-        return {
-          cart: state.cart
-        };
-        case "remove":
+      case 'addToCart':
+        console.log('10 cart',state.cart.includes(payload),payload.inventoryCount > 0);
+          if(!state.cart.includes(payload) && payload.inventoryCount > 0)
+          { 
+            return{...state,cart:[...state.cart,payload],
+            inventoryCount:payload.inventoryCount--,}
+          }else{
+            return{...state,cart:[...state.cart],}
+          }
+        case 'remove':
             return {
-              cart: state.cart.filter(item=>item.name !== payload.name)
+              cart: state.cart.filter(item=>item.name !== payload.name),
+              inventoryCount:payload.inventoryCount++,
             };
       default:
         console.log('20 storefront catigories',state);
         return state;
     }
-  };
+};
   
 export const addToCart = (cart) => {
     return {
-      type: "addToCart",
+      type: 'addToCart',
       payload: cart,
     };
 };
 
 export const removeFromCart = (cart) => {
     return {
-      type: "remove",
+      type: 'remove',
       payload: cart,
     };
 };
   
-  export default CartReducer;
-  
+export default CartReducer;

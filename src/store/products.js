@@ -52,12 +52,12 @@ const ProductReducer =(state = initialProductState,action)=>{
     let {type,payload}=action;
     switch (type) {
         case 'active':
-            console.log('state.products',payload,state.products);
+            // console.log('state.products',payload,state.products);
+            // console.log('56 storefront product',List);
             let List= state.products.filter(item=> item.categoryAssociation===payload);
-            console.log('56 storefront product',List);
             return { products: state.products, List: List };    
         default:
-            console.log('59 storefront product',state);
+            // console.log('59 storefront product',state);
             return state;
     }
 }
