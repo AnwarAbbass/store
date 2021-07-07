@@ -4,11 +4,11 @@ let initialCartState = {
   
 const CartReducer = (state = initialCartState, action) => {
     let { type, payload } = action;
-    console.log('7 cart',payload);
     switch (type) {
       case 'addToCart':
-        console.log('10 cart',state.cart.includes(payload),payload.inventoryCount > 0);
-          if(!state.cart.includes(payload) && payload.inventoryCount > 0)
+        console.log('9 cart',payload);
+        console.log('10 cart',payload.inStock > 0);
+          if(!state.cart.includes(payload) && payload.inStock > 0)
           { 
             return{...state,cart:[...state.cart,payload],
             inventoryCount:payload.inventoryCount--,}
@@ -21,7 +21,7 @@ const CartReducer = (state = initialCartState, action) => {
               inventoryCount:payload.inventoryCount++,
             };
       default:
-        console.log('20 storefront cart',state);
+        console.log('20 store cart',state);
         return state;
     }
 };

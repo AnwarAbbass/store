@@ -7,8 +7,10 @@ import Carts from './components/cart/simplecart';
 function App() {
   return (
     <>
-    <Carts/>
     <Header />
+    <Carts/>
+    <br></br>
+    <hr></hr>
     <Category />
     <Products />
     <Footer />

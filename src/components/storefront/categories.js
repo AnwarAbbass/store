@@ -14,6 +14,7 @@ const Category = (props) => {
                     <li
                         key={i}
                         onClick={() => dispatch(getRemoteData(item.normalizedName,'get',{}))}>
+                        {console.log('llllllllllllllll',item)}
                         {item.displayName}
                     </li>
                 )

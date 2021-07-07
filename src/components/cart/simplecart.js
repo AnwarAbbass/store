@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { removeFromCart ,addToCart} from '../../store/cart';
 
 function Carts(props) {
-console.log('5 storefront cart',props);
+console.log('5 cart',props);
     if (props.cart) 
     {return (
         <>
