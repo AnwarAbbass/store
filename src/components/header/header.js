@@ -1,6 +1,7 @@
 import React from "react";
 import { Button,Typography,AppBar,Toolbar,Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header(){
+function Header(props){
     const classes = useStyles();
     return(
         <header>
@@ -30,7 +31,7 @@ function Header(){
         <Button ><Typography variant="h3" component="h3">StoreFront</Typography></Button>
         </Grid>
         <Grid item xs className={classes.cart}>
-        <Button >CART (0)</Button>
+        <Button >CART ({props.cart.length})</Button>
         </Grid>
         </Grid>
         </Toolbar>
@@ -43,4 +44,10 @@ function Header(){
     )
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+    cart:state.CartReducer.cart
+});
+
+export default connect(mapStateToProps)(Header);
+
+// export default Header;
